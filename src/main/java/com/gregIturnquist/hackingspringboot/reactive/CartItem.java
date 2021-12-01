@@ -33,6 +33,7 @@ class CartItem {
     }
 
 
+
     public void setItem(Item item) {
         this.item = item;
     }
@@ -45,4 +46,11 @@ class CartItem {
         this.quantity = quantity;
     }
 
+    public void increment() {
+        this.quantity++;
+    }
+    @Override
+    public String toString() {
+        return "CartItem{" + "item=" + item + ", quantity=" + quantity + '}';
+    }
 }

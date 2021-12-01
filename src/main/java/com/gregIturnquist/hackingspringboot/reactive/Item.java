@@ -2,6 +2,8 @@ package com.gregIturnquist.hackingspringboot.reactive;
 
 import org.springframework.data.annotation.Id;
 
+import java.awt.*;
+import java.util.Date;
 import java.util.Objects;
 
 public class Item {
@@ -11,7 +13,8 @@ public class Item {
     private String name;
     private double price;
 
-    private Item() {
+
+    Item() {
     }
 
     Item(String name, double price) {
@@ -55,4 +58,7 @@ public class Item {
     public int hashCode() {
         return Objects.hash(id, name, price);
     }
+
+
+
 }
