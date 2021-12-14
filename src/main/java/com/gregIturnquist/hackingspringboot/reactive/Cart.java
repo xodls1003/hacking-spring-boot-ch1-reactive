@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-class Cart {
+public class Cart {
 
     private @Id String id;
     private List<CartItem> cartItems;

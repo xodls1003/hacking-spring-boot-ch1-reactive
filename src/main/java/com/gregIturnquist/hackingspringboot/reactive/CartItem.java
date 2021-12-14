@@ -2,7 +2,7 @@ package com.gregIturnquist.hackingspringboot.reactive;
 
 import java.util.Objects;
 
-class CartItem {
+public class CartItem {
 
     private Item item;
     private int quantity;
@@ -15,24 +15,19 @@ class CartItem {
         this.quantity = 1;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CartItem cartItem = (CartItem) o;
-        return quantity == cartItem.quantity && item.equals(cartItem.item);
+    // end::code[]
+
+    public void increment() {
+        this.quantity++;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(item, quantity);
+    public void decrement() {
+        this.quantity--;
     }
 
     public Item getItem() {
         return item;
     }
-
-
 
     public void setItem(Item item) {
         this.item = item;
@@ -46,9 +41,21 @@ class CartItem {
         this.quantity = quantity;
     }
 
-    public void increment() {
-        this.quantity++;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        CartItem cartItem = (CartItem) o;
+        return quantity == cartItem.quantity && Objects.equals(item, cartItem.item);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(item, quantity);
+    }
+
     @Override
     public String toString() {
         return "CartItem{" + "item=" + item + ", quantity=" + quantity + '}';

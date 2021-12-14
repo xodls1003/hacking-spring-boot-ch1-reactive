@@ -11,10 +11,51 @@ public class Item {
     private @Id
     String id;
     private String name;
+    private String Description;
     private double price;
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", Description='" + Description + '\'' +
+                ", price=" + price +
+                '}';
+    }
 
-    Item() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Double.compare(item.price, price) == 0 && Objects.equals(id, item.id) && Objects.equals(name, item.name) && Objects.equals(Description, item.Description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, Description);
+    }
+
+    public Item(String name, String description, double price) {
+        this.name = name;
+        this.price = price;
+        Description = description;
+    }
+
+    public Item(String id, String name, String description, double price) {
+        this.id = id;
+        this.name = name;
+        Description = description;
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 
     Item(String name, double price) {
@@ -45,20 +86,6 @@ public class Item {
     public void setPrice(double price) {
         this.price = price;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
-        return Double.compare(item.price, price) == 0 && id.equals(item.id) && name.equals(item.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, price);
-    }
-
 
 
 }
