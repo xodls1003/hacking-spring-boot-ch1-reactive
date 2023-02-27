@@ -5,13 +5,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
 
+
+// tag::code[]
 @Component
 public class TemplateDatabaseLoader {
+
     @Bean
-    CommandLineRunner initialize(MongoOperations mongo){
+    CommandLineRunner initialize(MongoOperations mongo) {
         return args -> {
-            mongo.save(new Item("item1","Alf alarm clock" ,"alarm clock", 19.99));
-            mongo.save(new Item( "item2","Smurf TV tray","Tv tray", 24.99));
+            mongo.save(new Item("Alf alarm clock", "kids clock", 19.99));
+            mongo.save(new Item("Smurf TV tray", "kids TV tray", 24.99));
+//			mongo.save(new Item("TEST", "TEST", 99.99));  // 계층화 이미지 빌드 확인 시 주석 해제
         };
     }
 }
+// end::code[]

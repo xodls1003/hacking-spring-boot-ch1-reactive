@@ -3,15 +3,19 @@ package com.greglturnquist.hackingspringboot.reactive;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-@Service
+// tag::code[]
+@Service // <1>
 class CartService {
+
     private final ItemRepository itemRepository;
     private final CartRepository cartRepository;
 
-    CartService(ItemRepository itemRepository, CartRepository cartRepository){
+    CartService(ItemRepository itemRepository, // <2>
+                CartRepository cartRepository) {
         this.itemRepository = itemRepository;
         this.cartRepository = cartRepository;
     }
+
     Mono<Cart> addToCart(String cartId, String id) { // <3>
         return this.cartRepository.findById(cartId) //
                 .defaultIfEmpty(new Cart(cartId)) //
@@ -30,3 +34,4 @@ class CartService {
                 .flatMap(this.cartRepository::save); // <5>
     }
 }
+// end::code[]

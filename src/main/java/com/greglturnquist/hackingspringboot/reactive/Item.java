@@ -4,7 +4,9 @@ import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
 
+// tag::code[]
 public class Item {
+
     private @Id String id;
     private String name;
     private String description;
@@ -86,5 +88,4 @@ public class Item {
                 ", price=" + price +
                 '}';
     }
-
 }
