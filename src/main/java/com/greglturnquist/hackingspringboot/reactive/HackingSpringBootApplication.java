@@ -1,6 +1,7 @@
 package com.greglturnquist.hackingspringboot.reactive;
 
 import org.bson.Document;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
@@ -76,5 +77,9 @@ public class HackingSpringBootApplication {
 //		return mappingConverter;
 //	}
 //	// end::custom-2[]
-
+	@Bean
+	Jackson2JsonMessageConverter jackson2JsonMessageConverter() {
+	return new Jackson2JsonMessageConverter();
+}
+		// end::jackson[]
 }
